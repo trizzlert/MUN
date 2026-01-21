@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria's Public School - Model United Nations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #007AFF;
+            --light-bg: #f5f5f7;
+            --text-light: #86868b;
+            --text-dark: #1d1d1f;
+            --white: #ffffff;
+            --transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .school-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: var(--primary-color);
+        }
+        
+        .event-name {
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+        
+        .dates {
+            font-size: 0.9rem;
+            font-weight: 500;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+            transition: var(--transition);
+        }
+        
+        .dates:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 5%;
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .hero-title .line1 {
+            display: block;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards 0.2s;
+        }
+        
+        .hero-title .line2 {
+            display: block;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards 0.5s;
+        }
+        
+        .hero-title .line3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s forwards 0.8s;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-light);
+            max-width: 700px;
+            text-align: center;
+            margin: 2rem 0 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s forwards 1.1s;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s forwards 1.4s;
+        }
+        
+        .cta-button i {
+            margin-left: 0.8rem;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 122, 255, 0.4);
+        }
+        
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 8rem 5%;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            line-height: 1.7;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        /* Cards */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(40px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .card-description {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .card-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .card-button i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .card-button:hover {
+            color: #0056cc;
+        }
+        
+        .card-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Form */
+        .form-container {
+            background-color: var(--light-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+        
+        /* Updates */
+        .updates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .update-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .update-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .update-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+        }
+        
+        .update-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #f5f5f7;
+        }
+        
+        .footer-column a {
+            display: block;
+            color: #86868b;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #86868b;
+            font-size: 0.9rem;
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        /* Background elements */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .bg-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            top: 10%;
+            right: -100px;
+        }
+        
+        .bg-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ff2d55 0%, transparent 70%);
+            bottom: 20%;
+            left: -50px;
+        }
+        
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 5rem 5%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="school-name">Maria's Public School</div>
+            <div class="event-name">INTRA & INTER MODEL UNITED NATIONS</div>
+        </div>
+        <div class="dates">15th - 17th July 2024</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="bg-element bg-1"></div>
+        <div class="bg-element bg-2"></div>
+        
+        <h1 class="hero-title">
+            <span class="line1">Diplomacy · Debate · Decision.</span>
+            <span class="line2">MODEL UNITED NATIONS</span>
+            <span class="line3">Intra & Inter MUN 2024</span>
+        </h1>
+        
+        <p class="hero-subtitle">A premier educational simulation where students role-play as international delegates to tackle global issues through diplomacy and debate.</p>
+        
+        <a href="#register" class="cta-button">
+            REGISTER NOW <i class="fas fa-arrow-right"></i>
+        </a>
+    </section>
+
+    <!-- What is MUN Section -->
+    <section class="section">
+        <h2 class="section-title" id="what-is-mun">WHAT IS MUN?</h2>
+        <p class="section-subtitle">The Model United Nations (MUN) is an educational simulation where students role-play as international delegates and engage in discussions to tackle global issues.</p>
+        
+        <div class="cards-container">
+            <div class="card">
+                <h3 class="card-title">Learn Diplomacy</h3>
+                <p class="card-description">Develop essential skills in diplomacy, negotiation, and conflict resolution through realistic simulations of United Nations proceedings.</p>
+                <a href="#" class="card-button">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Master Public Speaking</h3>
+                <p class="card-description">Build confidence and eloquence as you present positions, debate policies, and collaborate with peers from diverse backgrounds.</p>
+                <a href="#" class="card-button">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Critical Thinking</h3>
+                <p class="card-description">Analyze complex global issues, research country positions, and develop innovative solutions to real-world problems.</p>
+                <a href="#" class="card-button">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="section" id="register" style="background-color: var(--light-bg);">
+        <h2 class="section-title">JOIN OUR MUN EVENT</h2>
+        <p class="section-subtitle">The Online Socratic Nations (MUN) is a coeducational discussion game where students spin policy to create resolutions. Develop your diplomatic skills to tackle global issues with cooperation.</p>
+        
+        <div class="form-container">
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="school">School/Institution</label>
+                    <input type="text" id="school" placeholder="Enter your school/institution" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="munType">Select MUN Type</label>
+                    <select id="munType" required>
+                        <option value="">Choose an option</option>
+                        <option value="intra">Intra MUN</option>
+                        <option value="inter">Inter MUN</option>
+                        <option value="both">Both</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="cta-button" style="width: 100%; justify-content: center;">
+                    Register Now <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- MUN Types Section -->
+    <section class="section">
+        <h2 class="section-title">INTRA & INTER MUN</h2>
+        <p class="section-subtitle">Choose between our two premier MUN experiences designed to challenge and develop your diplomatic skills.</p>
+        
+        <div class="cards-container">
+            <div class="card">
+                <h3 class="card-title">INTRA MUN</h3>
+                <p class="card-description">Challenge Your Peers, Debate & Discover. Engage in dynamic debate and collaboration with diverse peers from around the world. Develop critical thinking, research, and communication skills to excel in international affairs.</p>
+                <a href="#" class="card-button">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">INTER MUN</h3>
+                <p class="card-description">Compete Globally, Connect & Collaborate. Join delegates from across the globe to discuss and debate complex issues. Collaborate with peers from different countries to find solutions and promote peace.</p>
+                <a href="#" class="card-button">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updates Section -->
+    <section class="section" style="background-color: var(--light-bg);">
+        <h2 class="section-title">LATEST UPDATES</h2>
+        <p class="section-subtitle">Stay informed about the latest announcements, schedules, and resources for MUN 2024.</p>
+        
+        <div class="updates-container">
+            <div class="update-card">
+                <div class="update-date">11/03/2024 12:34</div>
+                <h4 class="update-title">Event Schedule Announced</h4>
+                <p>The complete schedule for MUN 2024 is now available. Check the detailed timeline of committee sessions, workshops, and social events.</p>
+            </div>
+            
+            <div class="update-card">
+                <div class="update-date">11/03/2024 12:34</div>
+                <h4 class="update-title">Delegates Training Sessions</h4>
+                <p>Sign up for our comprehensive training sessions covering research, public speaking, resolution writing, and parliamentary procedure.</p>
+            </div>
+            
+            <div class="update-card">
+                <div class="update-date">11/03/2024 12:34</div>
+                <h4 class="update-title">MUN Tips & Resources</h4>
+                <p>Access our curated collection of resources, including research guides, position paper templates, and expert advice for first-time delegates.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <a href="mailto:mun@mariaspublicschool.edu">mun@mariaspublicschool.edu</a>
+                <a href="tel:+11234567890">+1 (123) 456-7890</a>
+                <a href="#">123 Diplomacy Avenue, UN City</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>About</h3>
+                <a href="#">Our Mission</a>
+                <a href="#">MUN History</a>
+                <a href="#">Organizing Team</a>
+                <a href="#">Partners</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#what-is-mun">What is MUN?</a>
+                <a href="#register">Registration</a>
+                <a href="#">Schedule</a>
+                <a href="#">Resources</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Socials</h3>
+                <p>Follow us for updates and announcements</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 Maria's Public School. All rights reserved. | Model United Nations
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe section titles and subtitles
+            document.querySelectorAll('.section-title, .section-subtitle').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe cards
+            document.querySelectorAll('.card, .form-container, .update-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Form submission
+            const form = document.getElementById('registrationForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('fullName').value;
+                const munType = document.getElementById('munType').value;
+                
+                // Show success message
+                alert(`Thank you ${name}! Your registration for ${munType} MUN has been received. We'll contact you shortly with further details.`);
+                
+                // Reset form
+                form.reset();
+            });
+            
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '1rem 5%';
+                    header.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '1.5rem 5%';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
