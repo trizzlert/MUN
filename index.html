@@ -120,16 +120,18 @@
     animation:fadeUp 0.8s var(--ease) forwards 1s;
   }
 
-  /* stamp badge */
+/* stamp badge */
   .stamp{
-    width:112px; height:112px; position:relative;
+    width:130px; height:130px; position:relative;
     animation:stampIn 0.9s var(--ease) forwards 1.3s;
     opacity:0; transform:scale(1.5) rotate(-14deg);
   }
   .stamp svg{width:100%; height:100%;}
-  .stamp .ring{fill:none; stroke:#DCE7F8; stroke-width:1;}
-  .stamp .core{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; fill:var(--ivory);}
+  .stamp .ring{fill:none; stroke:#DCE7F8; stroke-width:0.75;}
+  .stamp .ring-thin{fill:none; stroke:#5F7FB8; stroke-width:0.5;}
+  .stamp .core{font-family:'IBM Plex Mono',monospace; font-weight:600; fill:var(--ivory);}
 
+  
   @keyframes fadeUp{to{opacity:1; transform:translateY(0);}}
   @keyframes stampIn{
     0%{opacity:0; transform:scale(1.6) rotate(-18deg);}
@@ -245,18 +247,19 @@
   <p class="hero-sub">A three-day diplomatic proceeding where students step into the role of delegate — researching positions, negotiating resolutions, and defending them on the floor.</p>
   <div class="hero-cta-row">
     <a href="" class="btn-primary">Register as a Delegate →</a>
-    <div class="stamp">
-      <svg viewBox="0 0 120 120">
-        <circle class="ring" cx="60" cy="60" r="56"/>
-        <circle class="ring" cx="60" cy="60" r="49"/>
-        <path id="arcTop" d="M 16 60 A 44 44 0 0 1 104 60" fill="none"/>
-        <path id="arcBot" d="M 20 78 A 40 40 0 0 0 100 78" fill="none"/>
-        <text font-family="IBM Plex Mono" font-size="7.5" letter-spacing="1.5" fill="#DCE7F8">
+     <div class="stamp">
+      <svg viewBox="0 0 140 140">
+        <circle class="ring" cx="70" cy="70" r="64"/>
+        <circle class="ring-thin" cx="70" cy="70" r="58"/>
+        <circle class="ring-thin" cx="70" cy="70" r="44"/>
+        <path id="arcTop" d="M 14 70 A 56 56 0 0 1 126 70" fill="none"/>
+        <path id="arcBot" d="M 22 92 A 50 50 0 0 0 118 92" fill="none"/>
+        <text font-family="IBM Plex Mono" font-size="7.2" letter-spacing="2" fill="#DCE7F8">
           <textPath href="#arcTop" startOffset="50%" text-anchor="middle">MARIA'S PUBLIC SCHOOL</textPath>
         </text>
-        <text class="core" text-anchor="middle" x="60" y="57">OCT</text>
-        <text class="core" text-anchor="middle" x="60" y="70">10–12</text>
-        <text font-family="IBM Plex Mono" font-size="6.5" letter-spacing="1.2" fill="#9FC0F0">
+        <text class="core" text-anchor="middle" x="70" y="65" font-size="12">OCT</text>
+        <text class="core" text-anchor="middle" x="70" y="80" font-size="15">10–12</text>
+        <text font-family="IBM Plex Mono" font-size="6.2" letter-spacing="1.5" fill="#9FC0F0">
           <textPath href="#arcBot" startOffset="50%" text-anchor="middle">INTRA · INTER · 2026</textPath>
         </text>
       </svg>
@@ -304,16 +307,17 @@
     <div class="letter-body">
       <span class="eyebrow">A Letter From the Secretaries-General</span>
       <h2>To Every Delegate Joining Us This October</h2>
-      <p class="dropcap">It is our privilege to welcome you to Maria's Public School's Intra &amp; Inter Model United Nations 2026. Over three days of committee session, negotiation, and resolution, we ask you to set aside easy certainty and sit with the difficulty of representing a position that may not be your own.</p>
-      <p>As Deputy Secretary-General, Syeda has spent the months before this conference shaping the finer machinery of it — the committee schedules, the delegate briefings, the small decisions that keep a room running smoothly once the gavel falls. That work rarely gets a spotlight, but a conference is only as good as the structure holding it up.</p>
-      <p>MUN rewards preparation, but it is decided in the room — in the amendment proposed at the right moment, in the bloc that holds together under pressure, in the delegate who listens as carefully as she speaks. We have built this conference to test exactly that.</p>
-      <p>To our first-time delegates: ask questions, make mistakes early, and trust the process. To our returning delegates: raise the bar for the room. To everyone — we are glad you are here.</p>
+      <p class="dropcap">It is my profound privilege to welcome you to the tenth edition of the Maria's Model United Nations. &amp; Being one of the first institutions to embark on the beginning of Model United Nations in the North East region, our school has never failed to continue the legacy of excellence since 2016.</p>
+      <p>Like our prior conferences, the tenth edition is set to be equally significant and exceptional. This conference will not only acknowledge your achievements but also serve as a platform where your ideas, perspectives, dialogues, and solutions are recognized and appreciated.  </p>
+      <p>I encourage every participant to engage wholeheartedly, debate respectfully, and approach every discussion with an open mind. May Maria’s Model United Nations 2026 serve as a space where ideas are exchanged, voices are heard, and diplomacy inspires action..</p>
+      <p>I wish all delegates the very best and look forward to witnessing an enriching and memorable conference.</p>
       <div class="signature-block">
-        <div class="role">With anticipation,</div>
-        <div class="name">Ayushmita Das Choudhury</div>
-        <div class="role">Secretary-General</div>
+        <div class="role">Warm regards,</div>
         <div class="name">Syeda Mahveen Adil</div>
         <div class="role">Deputy Secretary-General</div>
+          <div class="signature-block">
+        <div class="name">Ayushmita Das Choudhury</div>
+        <div class="role">Secretary-General</div>
       </div>
     </div>
   </div>
